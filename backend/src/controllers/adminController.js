@@ -25,7 +25,7 @@ export const dashboard = async (req, res) => {
       group: ['Stores.id'],
       order: [[literal('avgRating'), 'DESC']],
       limit: 10,
-      subQuery: false // important to avoid extra wrapping
+      subQuery: false 
     });
 
     const byRole = await User.findAll({

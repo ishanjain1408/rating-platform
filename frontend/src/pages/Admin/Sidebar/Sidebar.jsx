@@ -1,18 +1,3 @@
-// import React from "react";
-// import "./Sidebar.css";
-
-// export default function Sidebar({ setActive }) {
-//   return (
-//     <div className="sidebar">
-//       <h3>Admin Panel</h3>
-//       <ul>
-//         <li onClick={() => setActive("addUser")}>Users</li>
-//         <li onClick={() => setActive("addStore")}>Stores</li>
-
-//       </ul>
-//     </div>
-//   );
-// }
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";

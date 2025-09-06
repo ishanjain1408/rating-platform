@@ -1,4 +1,3 @@
-/* Base resets */
 body {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   margin: 0;
@@ -7,7 +6,6 @@ body {
   line-height: 1.5;
 }
 
-/* Links */
 a {
   text-decoration: none;
   color: #fff;
@@ -16,7 +14,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Buttons */
 button {
   background: #d94343;
   color: #fff;
@@ -33,7 +30,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Inputs */
 input,
 select {
   padding: 8px 12px;

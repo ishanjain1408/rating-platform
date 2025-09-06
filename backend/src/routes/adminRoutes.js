@@ -5,10 +5,8 @@ import { dashboard } from '../controllers/adminController.js';
 
 const router = Router();
 
-// Admin Dashboard stats
 router.get('/admin/dashboard', authenticate, authorize(Roles.ADMIN), dashboard);
 
-// Get all users
 router.get('/admin/users', authenticate, authorize(Roles.ADMIN), async (req, res) => {
   try {
     const users = await User.findAll({ attributes: ['id', 'name', 'email', 'address', 'role'] });
@@ -19,7 +17,6 @@ router.get('/admin/users', authenticate, authorize(Roles.ADMIN), async (req, res
   }
 });
 
-// Create user
 router.post('/admin/users', authenticate, authorize(Roles.ADMIN), async (req, res) => {
   try {
     const { name, email, password, address, role } = req.body;
@@ -31,7 +28,6 @@ router.post('/admin/users', authenticate, authorize(Roles.ADMIN), async (req, re
   }
 });
 
-// Get all stores
 router.get('/admin/stores', authenticate, authorize(Roles.ADMIN), async (req, res) => {
   try {
     const stores = await Store.findAll({ attributes: ['id', 'name', 'email', 'address'] });
@@ -42,7 +38,6 @@ router.get('/admin/stores', authenticate, authorize(Roles.ADMIN), async (req, re
   }
 });
 
-// Create store
 router.post('/admin/stores', authenticate, authorize(Roles.ADMIN), async (req, res) => {
   try {
     const { name, email, address } = req.body;

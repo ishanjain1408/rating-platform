@@ -5,7 +5,6 @@ import { storeCreateValidator, handleValidation } from '../middleware/validators
 
 const router = Router();
 
-// Owners manage their stores; Admins can also create/update any, but routes are under /owner for convenience
 router.post(
   '/owner/stores',
   authenticate,

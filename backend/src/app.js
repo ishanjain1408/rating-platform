@@ -17,7 +17,6 @@ app.use(storeRoutes);
 app.use(ownerRoutes);
 app.use(adminRoutes);
 
-// 404
 app.use((req, res) => res.status(404).json({ message: 'Not Found' }));
 
 export default app;

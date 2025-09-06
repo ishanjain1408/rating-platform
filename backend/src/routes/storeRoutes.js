@@ -5,18 +5,15 @@ import { ratingValidator, handleValidation } from '../middleware/validators.js';
 
 const router = Router();
 
-// Public list (no auth required)
 router.get('/stores', listStores);
 
-// Create store (Owner or Admin)
 router.post(
   '/stores',
   authenticate,
-  authorize(Roles.ADMIN, Roles.OWNER), // adjust roles as needed
+  authorize(Roles.ADMIN, Roles.OWNER),
   createStore
 );
 
-// Rate store (Normal User only)
 router.post(
   '/stores/:id/rate',
   authenticate,
@@ -26,7 +23,6 @@ router.post(
   rateStore
 );
 
-// Rate store (Normal User only)
 router.post(
   '/stores/:id/rate',
   authenticate,

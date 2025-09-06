@@ -12,14 +12,14 @@ export const listStores = async (req, res) => {
         ]
       },
       include: [{ model: Rating, attributes: [] }],
-      group: ['Stores.id'],   // 👈 change from 'Stores.id'
-      order: [[literal('avgRating'), 'DESC']] // 👈 remove "NULLS LAST" if using MySQL
+      group: ['Stores.id'], 
+      order: [[literal('avgRating'), 'DESC']]
     });
 
     return res.json(stores);
   } catch (e) {
-    console.error('Error in listStores:', e); // 👈 log full error
-    return res.status(500).json({ message: e.message }); // 👈 send error message back
+    console.error('Error in listStores:', e); 
+    return res.status(500).json({ message: e.message });
   }
 };
 
@@ -32,7 +32,6 @@ export const rateStore = async (req, res) => {
     const store = await Store.findByPk(id);
     if (!store) return res.status(404).json({ message: 'Store not found' });
 
-    // Upsert: one rating per user per store
     const [row, created] = await Rating.findOrCreate({
       where: { user_id: req.user.id, store_id: id },
       defaults: { rating }
@@ -59,7 +58,7 @@ export const createStore = async (req, res) => {
     const ownerId =
       req.user.role === ROLES.ADMIN && req.body.owner_id
         ? req.body.owner_id
-        : req.user.id; // Owners create for themselves
+        : req.user.id; 
 
     const exists = await Store.findOne({ where: { email } });
     if (exists) return res.status(409).json({ message: 'Store email already used' });
@@ -98,7 +97,6 @@ export const updateStore = async (req, res) => {
     const store = await Store.findByPk(id);
     if (!store) return res.status(404).json({ message: 'Store not found' });
 
-    // Only owner or admin
     if (req.user.role !== ROLES.ADMIN && store.owner_id !== req.user.id) {
       return res.status(403).json({ message: 'Forbidden' });
     }

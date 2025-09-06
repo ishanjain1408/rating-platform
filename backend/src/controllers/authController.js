@@ -14,14 +14,11 @@ export const signup = async (req, res) => {
 
     const hash = await bcrypt.hash(password, 10);
 
-    // Only allow setting ADMIN via database seeding; prevent via API
     const finalRole =
       role && role === ROLES.ADMIN ? ROLES.USER : role || ROLES.USER;
 
     const user = await User.create({ name, email, password: hash, address, role: finalRole });
 
-    // If role is Store Owner, optionally auto-create a placeholder store (optional)
-    // await Store.create({ name: `${name}'s Store`, email: `store+${email}`, owner_id: user.id });
 
     return res.status(201).json({
       id: user.id,
