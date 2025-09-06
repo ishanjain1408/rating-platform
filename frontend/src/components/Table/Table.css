@@ -1,0 +1,35 @@
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+th, td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+th {
+  background: #f3f4f6;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+tr:hover td {
+  background: #f9fafb;
+}
+
+.filter-input {
+  margin-bottom: 10px;
+  max-width: 250px;
+}
